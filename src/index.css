@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background-color: #C1B49C;
+}
+
+code {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
