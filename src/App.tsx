@@ -2,14 +2,14 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './ui/components/Header/Header';
-import ListNews from './ui/components/ListNews/ListNews';
-import NewsDescription from './ui/components/NewsDescription/NewsDescription';
+import ListNews from './ui/pages/ListNews/ListNews';
+import NewsDescription from './ui/pages/NewsDescription/NewsDescription';
 
 import AppWrapper from './App.styles';
 
 export const App: React.FC = () => {
   return (
-    <AppWrapper className="bookroom">
+    <AppWrapper>
       <Header />
       <Routes>
         <Route path="/" element={<ListNews />} />
