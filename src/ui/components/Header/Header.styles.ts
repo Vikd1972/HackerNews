@@ -7,14 +7,14 @@ position: fixed;
 width: 100%;
 .header-box {
   margin: 0 auto;;
-  padding: 0 50px;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
   max-width: 1200px;
-  width: 100%;  
+  width: calc(100% - 30px);
   height: 60px;
+  gap: 10px;
 }
 .no-lazy {
   width: 400px;

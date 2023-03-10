@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
 import ButtonWrapper from './Button.styles';
 
 type ButtonType = {
-  children?: JSX.Element;
+  children: JSX.Element;
   onClick: () => void;
 };
 

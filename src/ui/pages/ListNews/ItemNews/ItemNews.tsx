@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TitleIcon from '@mui/icons-material/Title';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CommentIcon from '@mui/icons-material/Comment';
 
 import type { INews } from '../../../../store/hackerNewsSlice';
+import ItemNote from '../../../shared/ItemNote/ItemNote';
+import getDate from '../../../../utils/getDate';
 
 import ItemNewsWrapper from './ItemNews.styles';
 
@@ -15,9 +18,14 @@ type PropsType = {
 };
 
 export const ItemNews: React.FC<PropsType> = ({ itemNews }) => {
-  const locale = 'ru';
   const navigate = useNavigate();
-  const dateNews = new Date(itemNews.time * 1000);
+  const [currentDate, setCurrentDate] = useState<string>();
+
+  useEffect(() => {
+    const { date } = getDate(itemNews.time);
+    setCurrentDate(date);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getDetailNews = () => {
     navigate(`/news/${itemNews.id}`);
@@ -28,30 +36,37 @@ export const ItemNews: React.FC<PropsType> = ({ itemNews }) => {
       onClick={getDetailNews}
     >
       <div className="news-info">
-        <div className="news-info__by">
+        <ItemNote
+          text={itemNews.by || ''}
+        >
           <AccountCircleIcon />
-          <p>
-            {itemNews.by}
-          </p>
-        </div>
-        <div className="news-info__time">
+        </ItemNote>
+
+        <ItemNote
+          text={currentDate || ''}
+        >
           <CalendarMonthIcon />
-          <p>
-            {dateNews.toLocaleDateString(locale)}
-          </p>
-        </div>
-        <div className="news-info__score">
+        </ItemNote>
+
+        <ItemNote
+          text={itemNews.score || 0}
+        >
           <ThumbUpOffAltIcon />
-          <p>
-            {itemNews.score}
-          </p>
-        </div>
+        </ItemNote>
+
+        <ItemNote
+          text={itemNews.descendants || 0}
+        >
+          <CommentIcon />
+        </ItemNote>
       </div>
+
       <div className="news-title">
-        <TitleIcon />
-        <p>
-          {itemNews.title}
-        </p>
+        <ItemNote
+          text={itemNews.title || ''}
+        >
+          <TitleIcon />
+        </ItemNote>
       </div>
     </ItemNewsWrapper >
   );

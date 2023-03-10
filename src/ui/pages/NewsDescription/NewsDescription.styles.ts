@@ -1,18 +1,32 @@
 import styled from 'styled-components';
 
 const NewsDescriptionWrapper = styled.div`
+margin: 70px auto 0;
+max-width: 1200px;
+width: calc(100% - 50px);
+/* width: 100%; */
+border-radius: 15px;
+border: 1px solid #454438;
+padding: 10px;
 display: flex;
-justify-content: center;
-align-items: center;
 flex-direction: column;
-max-width: calc(100% - 3px);
-width: 100%;
-height: calc(90vh - 40px);
-color: #454438;
-background-color: #C1B49C;
-border-left: 1px solid #454438;
-border-right: 1px solid #454438;
-overflow-y: auto;
+.news-info {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.news-title {
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.news-link {
+  text-decoration: inherit;
+  color: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+}
 `;
 
 export default NewsDescriptionWrapper;

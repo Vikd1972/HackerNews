@@ -6,6 +6,9 @@ background-color: #C1B49C;
 color: #454438;
 border-radius: 10px;
 cursor: pointer;
+&&:hover {
+  background-color: #A1947C;
+}
 `;
 
 export default ButtonWrapper;

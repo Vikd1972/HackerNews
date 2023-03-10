@@ -16,15 +16,29 @@ export interface INews {
   title: string;
   type: string;
   url: string;
+  text: string;
 }
 
 export interface IHackerNewsState {
   idsNews: number[];
   news: INews[];
+  currentNews: INews;
 }
 const initialState: IHackerNewsState = {
   idsNews: [],
   news: [],
+  currentNews: {
+    by: '',
+    descendants: 0,
+    id: 0,
+    kids: [],
+    score: 0,
+    time: 0,
+    title: '',
+    type: '',
+    url: '',
+    text: '',
+  },
 };
 
 export const hackerNewsSlice = createSlice({
@@ -34,8 +48,17 @@ export const hackerNewsSlice = createSlice({
     addIdsNews: (state, action: PayloadAction<number[]>) => {
       state.idsNews = action.payload;
     },
+    resetNews: (state) => {
+      state.news = initialState.news;
+    },
     addNews: (state, action: PayloadAction<INews>) => {
       state.news.push(action.payload);
+    },
+    addCurrentNews: (state, action: PayloadAction<INews>) => {
+      state.currentNews = action.payload;
+    },
+    resetCurrentNews: (state) => {
+      state.currentNews = initialState.currentNews;
     },
   },
 
@@ -43,7 +66,10 @@ export const hackerNewsSlice = createSlice({
 
 export const {
   addIdsNews,
+  resetNews,
   addNews,
+  addCurrentNews,
+  resetCurrentNews,
 } = hackerNewsSlice.actions;
 
 export default hackerNewsSlice.reducer;
