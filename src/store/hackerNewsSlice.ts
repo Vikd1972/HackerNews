@@ -23,6 +23,9 @@ export interface IHackerNewsState {
   idsNews: number[];
   news: INews[];
   currentNews: INews;
+  numberOfColumns: number;
+  isMosaic: boolean;
+  isLightTheme: boolean;
 }
 const initialState: IHackerNewsState = {
   idsNews: [],
@@ -39,6 +42,9 @@ const initialState: IHackerNewsState = {
     url: '',
     text: '',
   },
+  numberOfColumns: 4,
+  isMosaic: false,
+  isLightTheme: false,
 };
 
 export const hackerNewsSlice = createSlice({
@@ -60,6 +66,15 @@ export const hackerNewsSlice = createSlice({
     resetCurrentNews: (state) => {
       state.currentNews = initialState.currentNews;
     },
+    changeNumberOfColumns: (state, action: PayloadAction<number>) => {
+      state.numberOfColumns = action.payload;
+    },
+    changeOutput: (state) => {
+      state.isMosaic = !state.isMosaic;
+    },
+    changeTheme: (state) => {
+      state.isLightTheme = !state.isLightTheme;
+    },
   },
 
 });
@@ -70,6 +85,9 @@ export const {
   addNews,
   addCurrentNews,
   resetCurrentNews,
+  changeNumberOfColumns,
+  changeOutput,
+  changeTheme,
 } = hackerNewsSlice.actions;
 
 export default hackerNewsSlice.reducer;

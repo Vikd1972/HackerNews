@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import HttpIcon from '@mui/icons-material/Http';
-import TitleIcon from '@mui/icons-material/Title';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -51,22 +50,22 @@ export const NewsDescription: React.FC = () => {
         <ItemNote
           text={news?.by || ''}
         >
-          <AccountCircleIcon />
+          <AccountCircleIcon sx={{ fontSize: 15 }} />
         </ItemNote>
         <ItemNote
           text={currentDate || ''}
         >
-          <CalendarMonthIcon />
+          <CalendarMonthIcon sx={{ fontSize: 15 }} />
         </ItemNote>
         <ItemNote
           text={news?.score || 0}
         >
-          <ThumbUpOffAltIcon />
+          <ThumbUpOffAltIcon sx={{ fontSize: 15 }} />
         </ItemNote>
         <ItemNote
           text={news?.descendants || 0}
         >
-          <CommentIcon />
+          <CommentIcon sx={{ fontSize: 15 }} />
         </ItemNote>
         <Link
           className="news-link"
@@ -76,17 +75,13 @@ export const NewsDescription: React.FC = () => {
           <ItemNote
             text={news?.url || ''}
           >
-            <HttpIcon fontSize="large" />
+            <HttpIcon sx={{ fontSize: 15 }} />
           </ItemNote>
         </Link>
       </div>
 
       <div className="news-title">
-        <ItemNote
-          text={news?.title || ''}
-        >
-          <TitleIcon />
-        </ItemNote>
+        {news?.title || ''}
       </div>
 
       {news?.text &&

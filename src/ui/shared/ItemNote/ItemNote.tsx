@@ -13,9 +13,9 @@ export const ItemNote: React.FC<ItemNoteType> = (props) => {
       <div className="icon">
         {props.children}
       </div>
-      <div className="text">
+      <p className="text">
         {props.text}
-      </div>
+      </p>
     </ItemNoteWrapper>
   );
 };

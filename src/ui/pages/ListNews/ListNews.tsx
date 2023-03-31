@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
+import type { INews } from '../../../store/hackerNewsSlice';
 import { addIdsNews, addNews, resetNews } from '../../../store/hackerNewsSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import getIdsNews from '../../../api/getIdsNews';
@@ -11,9 +12,29 @@ import ListNewsWrapper from './ListNews.styles';
 
 let checkedId = 0;
 
+type PrintType = {
+  index: number;
+  column: number;
+  itemNews: INews;
+};
+
+const PrintColumn: React.FC<PrintType> = (props) => {
+  const columnNumber = props.index % 5;
+
+  return (
+    <ItemNews
+      itemNews={columnNumber === props.column ? props.itemNews : null}
+    />
+  );
+};
+
 export const ListNews: React.FC = () => {
-  const news = useAppSelector((state) => state.hackerNews.news);
   const dispatch = useAppDispatch();
+  const hackerNews = useAppSelector((state) => state.hackerNews);
+
+  const columnArr = useMemo(() => {
+    return new Array(hackerNews.numberOfColumns).fill(0);
+  }, [hackerNews.numberOfColumns]);
 
   const getHackerNews = async () => {
     try {
@@ -49,16 +70,22 @@ export const ListNews: React.FC = () => {
   }, []);
 
   return (
-    <ListNewsWrapper>
-      {news.length && (<>
-        {news.map((itemNews) => (
-          <div key={itemNews.id}>
-            <ItemNews
-              itemNews={itemNews}
-            />
-          </div>
-        ))}
-      </>)}
+    <ListNewsWrapper
+      isMosaic={hackerNews.isMosaic}
+    >
+      {columnArr.map((_, ind) => (
+        <div key={ind}>
+          {hackerNews.news.map((itemNews, index) => (
+            <div key={index}>
+              <PrintColumn
+                itemNews={itemNews}
+                index={index}
+                column={ind}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
     </ListNewsWrapper >
   );
 };

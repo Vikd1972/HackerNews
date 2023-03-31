@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 const NewsDescriptionWrapper = styled.div`
+background-color: ${({ theme }) => theme.background};
+color: ${({ theme }) => theme.color};
 margin: 70px auto 0;
 max-width: 1200px;
 width: calc(100% - 50px);
-/* width: 100%; */
 border-radius: 15px;
-border: 1px solid #454438;
+border: 1px solid ${({ theme }) => theme.color};
 padding: 10px;
 display: flex;
 flex-direction: column;
@@ -15,6 +16,7 @@ flex-direction: column;
   flex-direction: row;
   gap: 30px;
   margin-bottom: 20px;
+  font-size: 16px;
 }
 .news-title {
   font-weight: 700;

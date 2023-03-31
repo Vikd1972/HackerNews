@@ -1,20 +1,24 @@
 import React from 'react';
 
-import ButtonWrapper from './Button.styles';
+import Button from '@mui/material/Button';
+
+// import ButtonWrapper from './Button.styles';
 
 type ButtonType = {
   children: JSX.Element;
   onClick: () => void;
 };
 
-export const Button: React.FC<ButtonType> = (props) => {
+export const MyButton: React.FC<ButtonType> = (props) => {
   return (
-    <ButtonWrapper
+    <Button
+      color="inherit"
+      variant="outlined"
       onClick={props.onClick}
     >
       {props.children}
-    </ButtonWrapper>
+    </Button>
   );
 };
 
-export default Button;
+export default MyButton;

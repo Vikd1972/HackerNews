@@ -5,8 +5,6 @@ body {
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  background-color: #C1B49C;
 }
 
 code {
@@ -14,7 +12,7 @@ code {
   font-weight: 500;
 }
 
-.appp {
+.app {
   width: 100px;
   height: 100px;
 }

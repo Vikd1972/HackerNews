@@ -34,19 +34,19 @@ export const ItemComment: React.FC<IOptions> = ({ comment }) => {
         <ItemNote
           text={comment.by || ''}
         >
-          <AccountCircleIcon />
+          <AccountCircleIcon sx={{ fontSize: 15 }} />
         </ItemNote>
 
         <ItemNote
           text={currentDate || ''}
         >
-          <CalendarMonthIcon />
+          <CalendarMonthIcon sx={{ fontSize: 15 }} />
         </ItemNote>
 
         <ItemNote
           text={comment?.kids?.length || 0}
         >
-          <CommentIcon />
+          <CommentIcon sx={{ fontSize: 15 }} />
         </ItemNote>
       </div>
 

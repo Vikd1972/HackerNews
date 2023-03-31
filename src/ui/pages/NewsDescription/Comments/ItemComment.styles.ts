@@ -3,8 +3,9 @@ import styled from 'styled-components';
 const ItemCommentWrapper = styled.div`
 width: auto;
 border-radius: 15px;
-border: 1px solid #454438;
-background-color: #A1947C;
+border: 1px solid ${({ theme }) => theme.color};
+color: ${({ theme }) => theme.color};
+background-color: ${({ theme }) => theme.background};
 padding: 10px;
 display: flex;
 flex-direction: column;
